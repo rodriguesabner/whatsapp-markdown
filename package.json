@@ -1,0 +1,11 @@
+{
+  "name": "whatsapp-mardown",
+  "version": "1.0.1",
+  "description": "Javascript Function to Replicate WhatsApp Text Formatting Behaviour",
+  "main": "src/index.js",
+  "author": "kingaspx",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js"
+  }
+}
