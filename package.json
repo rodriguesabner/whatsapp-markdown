@@ -1,10 +1,16 @@
 {
-  "name": "whatsapp-mardown",
-  "version": "1.0.1",
+  "name": "whatsapp-markdown",
+  "version": "1.0.8",
   "description": "Javascript Function to Replicate WhatsApp Text Formatting Behaviour",
   "main": "src/index.js",
   "author": "kingaspx",
   "license": "MIT",
+  "homepage": "https://github.com/kingaspx/whatsapp-markdown",
+  "bugs": "https://github.com/kingaspx/whatsapp-markdown/issues",
+  "repository": {
+    "url": "https://github.com/kingaspx/whatsapp-markdown",
+    "type": "git"
+  },
   "scripts": {
     "start": "node src/index.js"
   }

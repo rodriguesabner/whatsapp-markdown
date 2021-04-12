@@ -1,7 +1,6 @@
 export function formatWppMarkdown(textRef) {
     if (textRef.current !== null) {
         let format = textRef.current.innerText;
-
         format = whatsappStyles(format, "_", "<i>", "</i>");
         format = whatsappStyles(format, "*", "<b>", "</b>");
         format = whatsappStyles(format, "~", "<s>", "</s>");
@@ -11,12 +10,13 @@ export function formatWppMarkdown(textRef) {
         }
 
         textRef.current.innerHTML = format;
+        whatsappLinkStyle(textRef);
     }
 }
 
 function is_aplhanumeric(c) {
     let x = c.charCodeAt(0);
-    return ((x >= 65 && x <= 90) || (x >= 97 && x <= 122) || (x >= 48 && x <= 57)) ? true : false;
+    return ((x >= 65 && x <= 90) || (x >= 97 && x <= 122) || (x >= 48 && x <= 57));
 }
 
 function whatsappStyles(format, wildcard, opTag, clTag) {
@@ -45,4 +45,21 @@ function whatsappStyles(format, wildcard, opTag, clTag) {
         e += (t.length - 1);
     });
     return format;
+}
+
+function whatsappLinkStyle(element) {
+    if (element.current !== undefined) {
+        let text = element.current.innerText;
+
+        let pattern = new RegExp("^(https?:\\/\\/)?" +
+            "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
+            "((\\d{1,3}\\.){3}\\d{1,3}))" +
+            "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
+            "(\\?[;&a-z\\d%_.~+=-]*)?" +
+            "(\\#[-a-z\\d_]*)?$", "i");
+
+        if (pattern.test(text)) {
+            element.current.innerHTML = `<a href="${text}" target="_blank" rel="noreferrer">${text}</a>`;
+        }
+    }
 }
